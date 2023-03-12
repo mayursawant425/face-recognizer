@@ -9,7 +9,8 @@ class App extends React.Component {
     super();
     this.state = {
       input: "",
-      imgURL: ""
+      imgURL: "",
+      box: {}
     }
   }
 
@@ -19,16 +20,24 @@ class App extends React.Component {
 
   onButtonClick = (event) => {
     this.setState({ imgURL: this.state.input });
+    // const faceImgElement = document.getElementById("face-img");
+    // const faceImgHeight = Number(faceImgElement.height);
+    // const faceImgWidth = Number(faceImgElement.width);
+    const bounding_box = {
+      top: 10,
+      right: 10,
+      bottom: 10,
+      left: 10
+    };
+    this.setState({ box: bounding_box })
   }
 
   render() {
     return (
       <div>
         <Navigation />
-        <div className="wrapper">
-          <ImageLinkForm onInputChange={this.onInputChange} onButtonClick={this.onButtonClick} />
-          <FaceRecognition imgURL={this.state.imgURL} />
-        </div>
+        <ImageLinkForm onInputChange={this.onInputChange} onButtonClick={this.onButtonClick} />
+        <FaceRecognition imgURL={this.state.imgURL} box={this.state.box} />
       </div>
     );
   }
