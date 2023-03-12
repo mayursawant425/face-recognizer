@@ -5,11 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #000428;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #004e92, #000428);
+  background: -webkit-linear-gradient(to right, #a51adc, #d167d1);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #004e92, #000428);
+  background: linear-gradient(to right, #a51adc, #d167d1);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: 'Courier New', Courier, monospace;
 }
@@ -31,7 +30,7 @@ code {
 
 .nav-ele {
   appearance: button;
-  background-color: #1899D6;
+  background-color: #8c2020;
   border: solid transparent;
   border-radius: 16px;
   border-width: 0 0 4px;
@@ -111,4 +110,68 @@ code {
   width: max-content;
   word-break: normal;
   word-spacing: normal;
+}
+
+.sign-in-up-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 35%;
+  margin-right: 35%;
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgb(8 7 16 / 60%);
+}
+
+.sign-in-up-form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.sign-in-up-form>label {
+  text-align: left;
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.sign-in-up-form>input {
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.sign-in-up-form>input::placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+.sign-in-up-form>button {
+  margin: 50px 0;
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sign-in-up-form>p {
+  cursor: pointer;
+}
+
+.sign-in-up-form>p:hover {
+  color: #080710;
 }

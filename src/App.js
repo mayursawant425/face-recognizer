@@ -1,7 +1,9 @@
 import React from "react";
-import Navigation from "./Navigation/Navigation";
-import ImageLinkForm from "./ImageLinkForm/ImageLinkForm";
-import FaceRecognition from "./FaceRecognition/FaceRecognition"
+import Navigation from "./components/Navigation/Navigation";
+import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
+import FaceRecognition from "./components/FaceRecognition/FaceRecognition"
+// import SignIn from "./components/SignIn/SignIn"
+// import SignUp from "./components/SignUp/SignUp"
 
 
 class App extends React.Component {
