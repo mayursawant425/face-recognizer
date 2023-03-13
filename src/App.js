@@ -2,8 +2,8 @@ import React from "react";
 import Navigation from "./components/Navigation/Navigation";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition"
-// import SignIn from "./components/SignIn/SignIn"
-// import SignUp from "./components/SignUp/SignUp"
+import SignIn from "./components/SignIn/SignIn"
+import SignUp from "./components/SignUp/SignUp"
 
 
 class App extends React.Component {
@@ -12,7 +12,9 @@ class App extends React.Component {
     this.state = {
       input: "",
       imgURL: "",
-      box: {}
+      box: {},
+      route: "signin",
+      isSignedIn: false
     }
   }
 
@@ -34,12 +36,30 @@ class App extends React.Component {
     this.setState({ box: bounding_box })
   }
 
+  onRouteChange = (newRoute) => {
+    this.setState({ route: newRoute });
+    if (newRoute === "signin" || newRoute === "signup") {
+      this.setState({ isSignedIn: false });
+    } else {
+      this.setState({ isSignedIn: true });
+    }
+  }
+
   render() {
+    console.log(this.state.route, this.state.isSignedIn);
+    const { imgURL, box, route, isSignedIn } = this.state;
     return (
       <div>
-        <Navigation />
-        <ImageLinkForm onInputChange={this.onInputChange} onButtonClick={this.onButtonClick} />
-        <FaceRecognition imgURL={this.state.imgURL} box={this.state.box} />
+        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+        {isSignedIn
+          ? <div>
+            <ImageLinkForm onInputChange={this.onInputChange} onButtonClick={this.onButtonClick} />
+            <FaceRecognition imgURL={imgURL} box={box} />
+          </div>
+          : route === "signin"
+            ? <SignIn onRouteChange={this.onRouteChange} />
+            : <SignUp onRouteChange={this.onRouteChange} />
+        }
       </div>
     );
   }

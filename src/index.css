@@ -18,10 +18,6 @@ code {
     monospace;
 }
 
-.text-center {
-  text-align: center;
-}
-
 .navbar {
   display: flex;
   margin: 10px;
@@ -37,20 +33,15 @@ code {
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
-  display: inline-block;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: .8px;
   line-height: 20px;
-  margin: 0;
+  margin: 2px;
   outline: none;
-  overflow: visible;
   padding: 13px 16px;
   text-align: center;
-  text-transform: uppercase;
-  touch-action: manipulation;
   white-space: nowrap;
-  width: 100%;
 }
 
 .push-left {
@@ -174,4 +165,17 @@ code {
 
 .sign-in-up-form>p:hover {
   color: #080710;
+}
+
+
+.bg-red {
+  background-color: #8c2020;
+}
+
+.bg-green {
+  background-color: rgb(106, 199, 14);
+}
+
+.text-center {
+  text-align: center;
 }
