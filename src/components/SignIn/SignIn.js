@@ -11,7 +11,7 @@ const SignIn = ({ onRouteChange }) => {
                 <label htmlFor="password">Password: </label>
                 <input id="password" type="password" placeholder="Password" />
                 <button onClick={() => onRouteChange("home")}>Sign In</button>
-                <p>Sign Up</p>
+                <p onClick={() => onRouteChange("signup")}>Sign Up</p>
             </form>
         </div>
     );
