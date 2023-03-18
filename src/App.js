@@ -14,7 +14,14 @@ class App extends React.Component {
       imgURL: "",
       box: {},
       route: "signin",
-      isSignedIn: false
+      isSignedIn: false,
+      user: {
+        id: "",
+        name: "",
+        email: "",
+        entries: 0,
+        joined: ""
+      }
     }
   }
 
@@ -45,20 +52,28 @@ class App extends React.Component {
     }
   }
 
+  loadUser = (signedInUser) => {
+    this.setState({ user: signedInUser });
+  }
+
   render() {
-    console.log(this.state.route, this.state.isSignedIn);
     const { imgURL, box, route, isSignedIn } = this.state;
     return (
       <div>
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         {isSignedIn
-          ? <div>
+          ? <div>{this.state.user.name}
             <ImageLinkForm onInputChange={this.onInputChange} onButtonClick={this.onButtonClick} />
             <FaceRecognition imgURL={imgURL} box={box} />
           </div>
           : route === "signin"
-            ? <SignIn onRouteChange={this.onRouteChange} />
-            : <SignUp onRouteChange={this.onRouteChange} />
+            ? <SignIn
+              loadUser={this.loadUser}
+              onRouteChange={this.onRouteChange} />
+            : <SignUp
+              loadUser={this.loadUser}
+              onRouteChange={this.onRouteChange}
+            />
         }
       </div>
     );
