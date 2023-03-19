@@ -12,17 +12,14 @@ class SignIn extends React.Component {
 
   onEmailChange = (event) => {
     this.setState({ signInEmail: event.target.value });
-    console.log(event.target.value);
   }
 
   onPasswordChange = (event) => {
     this.setState({ signInPassword: event.target.value });
-    console.log(event.target.value);
   }
 
   onSubmitSignIn = () => {
     const { loadUser, onRouteChange } = this.props;
-    console.log(this.state.signInEmail, this.state.signInPassword);
     fetch("http://localhost:3001/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

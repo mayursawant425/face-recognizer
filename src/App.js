@@ -1,5 +1,6 @@
 import React from "react";
 import Navigation from "./components/Navigation/Navigation";
+import Rank from "./components/Rank/Rank";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition"
 import SignIn from "./components/SignIn/SignIn"
@@ -30,6 +31,7 @@ class App extends React.Component {
   }
 
   onButtonClick = (event) => {
+    const { user } = this.state;
     this.setState({ imgURL: this.state.input });
     // const faceImgElement = document.getElementById("face-img");
     // const faceImgHeight = Number(faceImgElement.height);
@@ -40,7 +42,15 @@ class App extends React.Component {
       bottom: 10,
       left: 10
     };
-    this.setState({ box: bounding_box })
+    this.setState({ box: bounding_box });
+    fetch(`http://localhost:3001/user/${user.id}/entries`, {
+      method: "put",
+      headers: { "Content-Type": "application/json" }
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState(Object.assign(user, { entries: data.entries }));
+      });
   }
 
   onRouteChange = (newRoute) => {
@@ -57,12 +67,13 @@ class App extends React.Component {
   }
 
   render() {
-    const { imgURL, box, route, isSignedIn } = this.state;
+    const { imgURL, box, route, isSignedIn, user } = this.state;
     return (
       <div>
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         {isSignedIn
-          ? <div>{this.state.user.name}
+          ? <div>
+            <Rank user={user} />
             <ImageLinkForm onInputChange={this.onInputChange} onButtonClick={this.onButtonClick} />
             <FaceRecognition imgURL={imgURL} box={box} />
           </div>
